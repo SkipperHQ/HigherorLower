@@ -63,6 +63,14 @@ class game:
                     # Sends to gameOver() function
                     game.gameOver()
 
+            else:
+                print("Number is too low, please select a number between 1 and 100.")
+                game.core(playerTries)
+
+        else:
+            print("Number is too high, please select a number between 1 and 100.")
+            game.core(playerTries)
+
 
     def gameOver():
         # If the two numbers are the same, you win. The else statement is just there in case of a weird error, just a possibility.
