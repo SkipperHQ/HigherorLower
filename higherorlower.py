@@ -15,6 +15,7 @@ class game:
         self.robotChoice = False
         self.playerChoice = False
         
+    # Start of main menu where you can start the game, soon, there might be functionality for a highscores menu for the client computer.
     def main():
         print("Welcome, start a new game?\nSelect an option using the number to the left of the respective option.\n1. New Game\n2. Statistics\n3. Exit Game")
         userInput = input("> ")
@@ -27,16 +28,19 @@ class game:
             pass
         elif userInput == "3" or userInput.title() == "Exit" or userInput.title() == "Quit":
             sys.exit()
-
+    # Selects the robot's number and sends player to the main game.
     def gameScreen():
         self.robotChoice = random.randint(0,100)
         print("Robot: I have selected a number between 1 and 100. Have a guess.")
         game.core(playerTries)
  
+    # Start of main game function
     def core(playerTries):
         self.playerChoice = int(input("> "))
+        # Two lines underneith serve to ensure that user doesn't select anything above 100 or lower than 1.
         if self.playerChoice < 101:
             if self.playerChoice > 0:
+                # Below are the lines of code that decide whether the two numbers are the same or whether player's code is higher/lower than robots.
                 if self.playerChoice < self.robotChoice:
                     print("Higher")
                     playerTries = playerTries + 1
@@ -56,10 +60,12 @@ class game:
                         print("You've had", playerTries, "tries")
                         game.core(playerTries)
                 else:
+                    # Sends to gameOver() function
                     game.gameOver()
 
 
     def gameOver():
+        # If the two numbers are the same, you win. The else statement is just there in case of a weird error, just a possibility.
         if self.playerChoice == self.robotChoice:
             print("Robot: You win! Congratulations!")
         else:
