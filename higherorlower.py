@@ -61,7 +61,7 @@ class game:
                         game.core(playerTries)
                 else:
                     # Sends to gameOver() function
-                    game.gameOver()
+                    game.gameOver(playerTries)
 
             else:
                 print("Number is too low, please select a number between 1 and 100.")
@@ -72,10 +72,13 @@ class game:
             game.core(playerTries)
 
 
-    def gameOver():
+    def gameOver(playerTries):
         # If the two numbers are the same, you win. The else statement is just there in case of a weird error, just a possibility.
         if self.playerChoice == self.robotChoice:
-            print("Robot: You win! Congratulations!")
+            print("Robot: You win! Congratulations!\nYou won with", playerTries, "tries!\nPress Enter to Continue...")
+            userInput = input("> \n")
+            game.main()
+            
         else:
             print("Robot: Try Again.")
             game.core()
